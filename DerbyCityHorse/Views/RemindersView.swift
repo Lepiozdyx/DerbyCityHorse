@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RemindersView: View {
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     @State private var swipedReminderId: UUID?
     
     var activeReminders: [Reminder] {
@@ -105,7 +105,7 @@ struct RemindersView: View {
 
 struct ReminderRow: View {
     let reminder: Reminder
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     @Binding var swipedReminderId: UUID?
     @State private var offset: CGFloat = 0
     

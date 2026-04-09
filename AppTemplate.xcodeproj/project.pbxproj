@@ -8,34 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		CE7115A62E6F181600BFCB5A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7115A52E6F181600BFCB5A /* LaunchScreen.storyboard */; };
-		FA5B54D92F858DAE0090E5C9 /* button.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA5B54BD2F858DAE0090E5C9 /* button.mp3 */; };
-		FA5B54DA2F858DAE0090E5C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5B54BC2F858DAE0090E5C9 /* Assets.xcassets */; };
-		FA5B54DC2F858DAE0090E5C9 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA5B54D02F858DAE0090E5C9 /* Actions.sks */; };
-		FA5B54DE2F858DAE0090E5C9 /* HorsesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C92F858DAE0090E5C9 /* HorsesListView.swift */; };
-		FA5B54DF2F858DAE0090E5C9 /* AddEditHorseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C12F858DAE0090E5C9 /* AddEditHorseView.swift */; };
-		FA5B54E02F858DAE0090E5C9 /* ActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54B42F858DAE0090E5C9 /* ActionType.swift */; };
-		FA5B54E12F858DAE0090E5C9 /* TrainingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54BA2F858DAE0090E5C9 /* TrainingType.swift */; };
-		FA5B54E22F858DAE0090E5C9 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54B12F858DAE0090E5C9 /* DataManager.swift */; };
-		FA5B54E32F858DAE0090E5C9 /* TimePickerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54CC2F858DAE0090E5C9 /* TimePickerBottomSheet.swift */; };
-		FA5B54E42F858DAE0090E5C9 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54B62F858DAE0090E5C9 /* JournalEntry.swift */; };
-		FA5B54E52F858DAE0090E5C9 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54CA2F858DAE0090E5C9 /* MainTabView.swift */; };
-		FA5B54E62F858DAE0090E5C9 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54B22F858DAE0090E5C9 /* NavigationManager.swift */; };
-		FA5B54E82F858DAE0090E5C9 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C42F858DAE0090E5C9 /* CalendarView.swift */; };
-		FA5B54E92F858DAE0090E5C9 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C52F858DAE0090E5C9 /* CustomDatePicker.swift */; };
-		FA5B54EA2F858DAE0090E5C9 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C62F858DAE0090E5C9 /* CustomHeaderView.swift */; };
-		FA5B54EB2F858DAE0090E5C9 /* AddJournalEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C22F858DAE0090E5C9 /* AddJournalEntryView.swift */; };
-		FA5B54EC2F858DAE0090E5C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54D32F858DAE0090E5C9 /* ContentView.swift */; };
-		FA5B54ED2F858DAE0090E5C9 /* AddTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C32F858DAE0090E5C9 /* AddTrainingView.swift */; };
-		FA5B54EE2F858DAE0090E5C9 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54CB2F858DAE0090E5C9 /* RemindersView.swift */; };
-		FA5B54EF2F858DAE0090E5C9 /* HorseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C82F858DAE0090E5C9 /* HorseDetailView.swift */; };
-		FA5B54F02F858DAE0090E5C9 /* TrainingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54CD2F858DAE0090E5C9 /* TrainingsListView.swift */; };
-		FA5B54F12F858DAE0090E5C9 /* Horse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54B52F858DAE0090E5C9 /* Horse.swift */; };
-		FA5B54F32F858DAE0090E5C9 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54B92F858DAE0090E5C9 /* Training.swift */; };
-		FA5B54F42F858DAE0090E5C9 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54B72F858DAE0090E5C9 /* Mood.swift */; };
-		FA5B54F52F858DAE0090E5C9 /* ButtonSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54BF2F858DAE0090E5C9 /* ButtonSound.swift */; };
-		FA5B54F62F858DAE0090E5C9 /* Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54CE2F858DAE0090E5C9 /* Tutor.swift */; };
-		FA5B54F72F858DAE0090E5C9 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54B82F858DAE0090E5C9 /* Reminder.swift */; };
-		FA5B54F82F858DAE0090E5C9 /* DatePickerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5B54C72F858DAE0090E5C9 /* DatePickerBottomSheet.swift */; };
+		FAC3BCB42F8803F500B647A0 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC932F8803F500B647A0 /* NavigationManager.swift */; };
+		FAC3BCB52F8803F500B647A0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC922F8803F500B647A0 /* DataManager.swift */; };
+		FAC3BCB62F8803F500B647A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCB12F8803F500B647A0 /* ContentView.swift */; };
+		FAC3BCB72F8803F500B647A0 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCAC2F8803F500B647A0 /* RemindersView.swift */; };
+		FAC3BCB82F8803F500B647A0 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC972F8803F500B647A0 /* JournalEntry.swift */; };
+		FAC3BCB92F8803F500B647A0 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC992F8803F500B647A0 /* Reminder.swift */; };
+		FAC3BCBA2F8803F500B647A0 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA72F8803F500B647A0 /* CustomHeaderView.swift */; };
+		FAC3BCBB2F8803F500B647A0 /* Horse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC962F8803F500B647A0 /* Horse.swift */; };
+		FAC3BCBC2F8803F500B647A0 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC982F8803F500B647A0 /* Mood.swift */; };
+		FAC3BCBD2F8803F500B647A0 /* AddJournalEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA32F8803F500B647A0 /* AddJournalEntryView.swift */; };
+		FAC3BCBE2F8803F500B647A0 /* DatePickerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA82F8803F500B647A0 /* DatePickerBottomSheet.swift */; };
+		FAC3BCBF2F8803F500B647A0 /* HorsesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCAA2F8803F500B647A0 /* HorsesListView.swift */; };
+		FAC3BCC02F8803F500B647A0 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCB22F8803F500B647A0 /* MainApp.swift */; };
+		FAC3BCC12F8803F500B647A0 /* AddEditHorseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA22F8803F500B647A0 /* AddEditHorseView.swift */; };
+		FAC3BCC22F8803F500B647A0 /* ButtonSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA02F8803F500B647A0 /* ButtonSound.swift */; };
+		FAC3BCC32F8803F500B647A0 /* ActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC952F8803F500B647A0 /* ActionType.swift */; };
+		FAC3BCC42F8803F500B647A0 /* Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCAF2F8803F500B647A0 /* Tutor.swift */; };
+		FAC3BCC52F8803F500B647A0 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA62F8803F500B647A0 /* CustomDatePicker.swift */; };
+		FAC3BCC62F8803F500B647A0 /* HorseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA92F8803F500B647A0 /* HorseDetailView.swift */; };
+		FAC3BCC72F8803F500B647A0 /* TimePickerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCAD2F8803F500B647A0 /* TimePickerBottomSheet.swift */; };
+		FAC3BCC82F8803F500B647A0 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCAB2F8803F500B647A0 /* MainTabView.swift */; };
+		FAC3BCC92F8803F500B647A0 /* AddTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA42F8803F500B647A0 /* AddTrainingView.swift */; };
+		FAC3BCCA2F8803F500B647A0 /* TrainingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC9B2F8803F500B647A0 /* TrainingType.swift */; };
+		FAC3BCCB2F8803F500B647A0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCA52F8803F500B647A0 /* CalendarView.swift */; };
+		FAC3BCCC2F8803F500B647A0 /* Training.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BC9A2F8803F500B647A0 /* Training.swift */; };
+		FAC3BCCD2F8803F500B647A0 /* TrainingsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC3BCAE2F8803F500B647A0 /* TrainingsListView.swift */; };
+		FAC3BCCE2F8803F500B647A0 /* button.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FAC3BC9E2F8803F500B647A0 /* button.mp3 */; };
+		FAC3BCCF2F8803F500B647A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC3BC9D2F8803F500B647A0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,34 +55,34 @@
 		CE7115342E6F0AB000BFCB5A /* AppTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7115A42E6F181600BFCB5A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEF3187B2E72A659004E27D7 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		FA5B54B12F858DAE0090E5C9 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		FA5B54B22F858DAE0090E5C9 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
-		FA5B54B42F858DAE0090E5C9 /* ActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionType.swift; sourceTree = "<group>"; };
-		FA5B54B52F858DAE0090E5C9 /* Horse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horse.swift; sourceTree = "<group>"; };
-		FA5B54B62F858DAE0090E5C9 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
-		FA5B54B72F858DAE0090E5C9 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
-		FA5B54B82F858DAE0090E5C9 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
-		FA5B54B92F858DAE0090E5C9 /* Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
-		FA5B54BA2F858DAE0090E5C9 /* TrainingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingType.swift; sourceTree = "<group>"; };
-		FA5B54BC2F858DAE0090E5C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FA5B54BD2F858DAE0090E5C9 /* button.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button.mp3; sourceTree = "<group>"; };
-		FA5B54BF2F858DAE0090E5C9 /* ButtonSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSound.swift; sourceTree = "<group>"; };
-		FA5B54C12F858DAE0090E5C9 /* AddEditHorseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditHorseView.swift; sourceTree = "<group>"; };
-		FA5B54C22F858DAE0090E5C9 /* AddJournalEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryView.swift; sourceTree = "<group>"; };
-		FA5B54C32F858DAE0090E5C9 /* AddTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrainingView.swift; sourceTree = "<group>"; };
-		FA5B54C42F858DAE0090E5C9 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		FA5B54C52F858DAE0090E5C9 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
-		FA5B54C62F858DAE0090E5C9 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
-		FA5B54C72F858DAE0090E5C9 /* DatePickerBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerBottomSheet.swift; sourceTree = "<group>"; };
-		FA5B54C82F858DAE0090E5C9 /* HorseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorseDetailView.swift; sourceTree = "<group>"; };
-		FA5B54C92F858DAE0090E5C9 /* HorsesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorsesListView.swift; sourceTree = "<group>"; };
-		FA5B54CA2F858DAE0090E5C9 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		FA5B54CB2F858DAE0090E5C9 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
-		FA5B54CC2F858DAE0090E5C9 /* TimePickerBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerBottomSheet.swift; sourceTree = "<group>"; };
-		FA5B54CD2F858DAE0090E5C9 /* TrainingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingsListView.swift; sourceTree = "<group>"; };
-		FA5B54CE2F858DAE0090E5C9 /* Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor.swift; sourceTree = "<group>"; };
-		FA5B54D02F858DAE0090E5C9 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		FA5B54D32F858DAE0090E5C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FAC3BC922F8803F500B647A0 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FAC3BC932F8803F500B647A0 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		FAC3BC952F8803F500B647A0 /* ActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionType.swift; sourceTree = "<group>"; };
+		FAC3BC962F8803F500B647A0 /* Horse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Horse.swift; sourceTree = "<group>"; };
+		FAC3BC972F8803F500B647A0 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		FAC3BC982F8803F500B647A0 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
+		FAC3BC992F8803F500B647A0 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		FAC3BC9A2F8803F500B647A0 /* Training.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Training.swift; sourceTree = "<group>"; };
+		FAC3BC9B2F8803F500B647A0 /* TrainingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingType.swift; sourceTree = "<group>"; };
+		FAC3BC9D2F8803F500B647A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAC3BC9E2F8803F500B647A0 /* button.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button.mp3; sourceTree = "<group>"; };
+		FAC3BCA02F8803F500B647A0 /* ButtonSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSound.swift; sourceTree = "<group>"; };
+		FAC3BCA22F8803F500B647A0 /* AddEditHorseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditHorseView.swift; sourceTree = "<group>"; };
+		FAC3BCA32F8803F500B647A0 /* AddJournalEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalEntryView.swift; sourceTree = "<group>"; };
+		FAC3BCA42F8803F500B647A0 /* AddTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTrainingView.swift; sourceTree = "<group>"; };
+		FAC3BCA52F8803F500B647A0 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		FAC3BCA62F8803F500B647A0 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		FAC3BCA72F8803F500B647A0 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
+		FAC3BCA82F8803F500B647A0 /* DatePickerBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerBottomSheet.swift; sourceTree = "<group>"; };
+		FAC3BCA92F8803F500B647A0 /* HorseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorseDetailView.swift; sourceTree = "<group>"; };
+		FAC3BCAA2F8803F500B647A0 /* HorsesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorsesListView.swift; sourceTree = "<group>"; };
+		FAC3BCAB2F8803F500B647A0 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		FAC3BCAC2F8803F500B647A0 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		FAC3BCAD2F8803F500B647A0 /* TimePickerBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerBottomSheet.swift; sourceTree = "<group>"; };
+		FAC3BCAE2F8803F500B647A0 /* TrainingsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingsListView.swift; sourceTree = "<group>"; };
+		FAC3BCAF2F8803F500B647A0 /* Tutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutor.swift; sourceTree = "<group>"; };
+		FAC3BCB12F8803F500B647A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FAC3BCB22F8803F500B647A0 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -107,7 +107,7 @@
 		CE71152B2E6F0AB000BFCB5A = {
 			isa = PBXGroup;
 			children = (
-				FA5B54D82F858DAE0090E5C9 /* DerbyCityHorse */,
+				FAC3BCB32F8803F500B647A0 /* DerbyCityHorse */,
 				CE7115A52E6F181600BFCB5A /* LaunchScreen.storyboard */,
 				CE7115362E6F0AB000BFCB5A /* AppTemplate */,
 				CE7115352E6F0AB000BFCB5A /* Products */,
@@ -131,77 +131,77 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FA5B54B32F858DAE0090E5C9 /* DataManager */ = {
+		FAC3BC942F8803F500B647A0 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
-				FA5B54B12F858DAE0090E5C9 /* DataManager.swift */,
-				FA5B54B22F858DAE0090E5C9 /* NavigationManager.swift */,
+				FAC3BC922F8803F500B647A0 /* DataManager.swift */,
+				FAC3BC932F8803F500B647A0 /* NavigationManager.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
 		};
-		FA5B54BB2F858DAE0090E5C9 /* Models */ = {
+		FAC3BC9C2F8803F500B647A0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FA5B54B42F858DAE0090E5C9 /* ActionType.swift */,
-				FA5B54B52F858DAE0090E5C9 /* Horse.swift */,
-				FA5B54B62F858DAE0090E5C9 /* JournalEntry.swift */,
-				FA5B54B72F858DAE0090E5C9 /* Mood.swift */,
-				FA5B54B82F858DAE0090E5C9 /* Reminder.swift */,
-				FA5B54B92F858DAE0090E5C9 /* Training.swift */,
-				FA5B54BA2F858DAE0090E5C9 /* TrainingType.swift */,
+				FAC3BC952F8803F500B647A0 /* ActionType.swift */,
+				FAC3BC962F8803F500B647A0 /* Horse.swift */,
+				FAC3BC972F8803F500B647A0 /* JournalEntry.swift */,
+				FAC3BC982F8803F500B647A0 /* Mood.swift */,
+				FAC3BC992F8803F500B647A0 /* Reminder.swift */,
+				FAC3BC9A2F8803F500B647A0 /* Training.swift */,
+				FAC3BC9B2F8803F500B647A0 /* TrainingType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FA5B54BE2F858DAE0090E5C9 /* Resources */ = {
+		FAC3BC9F2F8803F500B647A0 /* New Folder */ = {
 			isa = PBXGroup;
 			children = (
-				FA5B54BC2F858DAE0090E5C9 /* Assets.xcassets */,
-				FA5B54BD2F858DAE0090E5C9 /* button.mp3 */,
+				FAC3BC9D2F8803F500B647A0 /* Assets.xcassets */,
+				FAC3BC9E2F8803F500B647A0 /* button.mp3 */,
 			);
-			path = Resources;
+			path = "New Folder";
 			sourceTree = "<group>";
 		};
-		FA5B54C02F858DAE0090E5C9 /* Utils */ = {
+		FAC3BCA12F8803F500B647A0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				FA5B54BF2F858DAE0090E5C9 /* ButtonSound.swift */,
+				FAC3BCA02F8803F500B647A0 /* ButtonSound.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		FA5B54CF2F858DAE0090E5C9 /* Views */ = {
+		FAC3BCB02F8803F500B647A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FA5B54C12F858DAE0090E5C9 /* AddEditHorseView.swift */,
-				FA5B54C22F858DAE0090E5C9 /* AddJournalEntryView.swift */,
-				FA5B54C32F858DAE0090E5C9 /* AddTrainingView.swift */,
-				FA5B54C42F858DAE0090E5C9 /* CalendarView.swift */,
-				FA5B54C52F858DAE0090E5C9 /* CustomDatePicker.swift */,
-				FA5B54C62F858DAE0090E5C9 /* CustomHeaderView.swift */,
-				FA5B54C72F858DAE0090E5C9 /* DatePickerBottomSheet.swift */,
-				FA5B54C82F858DAE0090E5C9 /* HorseDetailView.swift */,
-				FA5B54C92F858DAE0090E5C9 /* HorsesListView.swift */,
-				FA5B54CA2F858DAE0090E5C9 /* MainTabView.swift */,
-				FA5B54CB2F858DAE0090E5C9 /* RemindersView.swift */,
-				FA5B54CC2F858DAE0090E5C9 /* TimePickerBottomSheet.swift */,
-				FA5B54CD2F858DAE0090E5C9 /* TrainingsListView.swift */,
-				FA5B54CE2F858DAE0090E5C9 /* Tutor.swift */,
+				FAC3BCA22F8803F500B647A0 /* AddEditHorseView.swift */,
+				FAC3BCA32F8803F500B647A0 /* AddJournalEntryView.swift */,
+				FAC3BCA42F8803F500B647A0 /* AddTrainingView.swift */,
+				FAC3BCA52F8803F500B647A0 /* CalendarView.swift */,
+				FAC3BCA62F8803F500B647A0 /* CustomDatePicker.swift */,
+				FAC3BCA72F8803F500B647A0 /* CustomHeaderView.swift */,
+				FAC3BCA82F8803F500B647A0 /* DatePickerBottomSheet.swift */,
+				FAC3BCA92F8803F500B647A0 /* HorseDetailView.swift */,
+				FAC3BCAA2F8803F500B647A0 /* HorsesListView.swift */,
+				FAC3BCAB2F8803F500B647A0 /* MainTabView.swift */,
+				FAC3BCAC2F8803F500B647A0 /* RemindersView.swift */,
+				FAC3BCAD2F8803F500B647A0 /* TimePickerBottomSheet.swift */,
+				FAC3BCAE2F8803F500B647A0 /* TrainingsListView.swift */,
+				FAC3BCAF2F8803F500B647A0 /* Tutor.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		FA5B54D82F858DAE0090E5C9 /* DerbyCityHorse */ = {
+		FAC3BCB32F8803F500B647A0 /* DerbyCityHorse */ = {
 			isa = PBXGroup;
 			children = (
-				FA5B54B32F858DAE0090E5C9 /* DataManager */,
-				FA5B54BB2F858DAE0090E5C9 /* Models */,
-				FA5B54BE2F858DAE0090E5C9 /* Resources */,
-				FA5B54C02F858DAE0090E5C9 /* Utils */,
-				FA5B54CF2F858DAE0090E5C9 /* Views */,
-				FA5B54D02F858DAE0090E5C9 /* Actions.sks */,
-				FA5B54D32F858DAE0090E5C9 /* ContentView.swift */,
+				FAC3BC942F8803F500B647A0 /* DataManager */,
+				FAC3BC9C2F8803F500B647A0 /* Models */,
+				FAC3BC9F2F8803F500B647A0 /* New Folder */,
+				FAC3BCA12F8803F500B647A0 /* Utils */,
+				FAC3BCB02F8803F500B647A0 /* Views */,
+				FAC3BCB12F8803F500B647A0 /* ContentView.swift */,
+				FAC3BCB22F8803F500B647A0 /* MainApp.swift */,
 			);
 			path = DerbyCityHorse;
 			sourceTree = "<group>";
@@ -273,10 +273,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC3BCCE2F8803F500B647A0 /* button.mp3 in Resources */,
+				FAC3BCCF2F8803F500B647A0 /* Assets.xcassets in Resources */,
 				CE7115A62E6F181600BFCB5A /* LaunchScreen.storyboard in Resources */,
-				FA5B54D92F858DAE0090E5C9 /* button.mp3 in Resources */,
-				FA5B54DA2F858DAE0090E5C9 /* Assets.xcassets in Resources */,
-				FA5B54DC2F858DAE0090E5C9 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,31 +286,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA5B54DE2F858DAE0090E5C9 /* HorsesListView.swift in Sources */,
-				FA5B54DF2F858DAE0090E5C9 /* AddEditHorseView.swift in Sources */,
-				FA5B54E02F858DAE0090E5C9 /* ActionType.swift in Sources */,
-				FA5B54E12F858DAE0090E5C9 /* TrainingType.swift in Sources */,
-				FA5B54E22F858DAE0090E5C9 /* DataManager.swift in Sources */,
-				FA5B54E32F858DAE0090E5C9 /* TimePickerBottomSheet.swift in Sources */,
-				FA5B54E42F858DAE0090E5C9 /* JournalEntry.swift in Sources */,
-				FA5B54E52F858DAE0090E5C9 /* MainTabView.swift in Sources */,
-				FA5B54E62F858DAE0090E5C9 /* NavigationManager.swift in Sources */,
-				FA5B54E82F858DAE0090E5C9 /* CalendarView.swift in Sources */,
-				FA5B54E92F858DAE0090E5C9 /* CustomDatePicker.swift in Sources */,
-				FA5B54EA2F858DAE0090E5C9 /* CustomHeaderView.swift in Sources */,
-				FA5B54EB2F858DAE0090E5C9 /* AddJournalEntryView.swift in Sources */,
-				FA5B54EC2F858DAE0090E5C9 /* ContentView.swift in Sources */,
-				FA5B54ED2F858DAE0090E5C9 /* AddTrainingView.swift in Sources */,
-				FA5B54EE2F858DAE0090E5C9 /* RemindersView.swift in Sources */,
-				FA5B54EF2F858DAE0090E5C9 /* HorseDetailView.swift in Sources */,
-				FA5B54F02F858DAE0090E5C9 /* TrainingsListView.swift in Sources */,
-				FA5B54F12F858DAE0090E5C9 /* Horse.swift in Sources */,
-				FA5B54F32F858DAE0090E5C9 /* Training.swift in Sources */,
-				FA5B54F42F858DAE0090E5C9 /* Mood.swift in Sources */,
-				FA5B54F52F858DAE0090E5C9 /* ButtonSound.swift in Sources */,
-				FA5B54F62F858DAE0090E5C9 /* Tutor.swift in Sources */,
-				FA5B54F72F858DAE0090E5C9 /* Reminder.swift in Sources */,
-				FA5B54F82F858DAE0090E5C9 /* DatePickerBottomSheet.swift in Sources */,
+				FAC3BCB42F8803F500B647A0 /* NavigationManager.swift in Sources */,
+				FAC3BCB52F8803F500B647A0 /* DataManager.swift in Sources */,
+				FAC3BCB62F8803F500B647A0 /* ContentView.swift in Sources */,
+				FAC3BCB72F8803F500B647A0 /* RemindersView.swift in Sources */,
+				FAC3BCB82F8803F500B647A0 /* JournalEntry.swift in Sources */,
+				FAC3BCB92F8803F500B647A0 /* Reminder.swift in Sources */,
+				FAC3BCBA2F8803F500B647A0 /* CustomHeaderView.swift in Sources */,
+				FAC3BCBB2F8803F500B647A0 /* Horse.swift in Sources */,
+				FAC3BCBC2F8803F500B647A0 /* Mood.swift in Sources */,
+				FAC3BCBD2F8803F500B647A0 /* AddJournalEntryView.swift in Sources */,
+				FAC3BCBE2F8803F500B647A0 /* DatePickerBottomSheet.swift in Sources */,
+				FAC3BCBF2F8803F500B647A0 /* HorsesListView.swift in Sources */,
+				FAC3BCC02F8803F500B647A0 /* MainApp.swift in Sources */,
+				FAC3BCC12F8803F500B647A0 /* AddEditHorseView.swift in Sources */,
+				FAC3BCC22F8803F500B647A0 /* ButtonSound.swift in Sources */,
+				FAC3BCC32F8803F500B647A0 /* ActionType.swift in Sources */,
+				FAC3BCC42F8803F500B647A0 /* Tutor.swift in Sources */,
+				FAC3BCC52F8803F500B647A0 /* CustomDatePicker.swift in Sources */,
+				FAC3BCC62F8803F500B647A0 /* HorseDetailView.swift in Sources */,
+				FAC3BCC72F8803F500B647A0 /* TimePickerBottomSheet.swift in Sources */,
+				FAC3BCC82F8803F500B647A0 /* MainTabView.swift in Sources */,
+				FAC3BCC92F8803F500B647A0 /* AddTrainingView.swift in Sources */,
+				FAC3BCCA2F8803F500B647A0 /* TrainingType.swift in Sources */,
+				FAC3BCCB2F8803F500B647A0 /* CalendarView.swift in Sources */,
+				FAC3BCCC2F8803F500B647A0 /* Training.swift in Sources */,
+				FAC3BCCD2F8803F500B647A0 /* TrainingsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

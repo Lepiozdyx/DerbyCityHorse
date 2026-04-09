@@ -9,8 +9,13 @@ import SwiftUI
 import PhotosUI
 
 struct AddEditHorseView: View {
+    private enum Field: Hashable {
+        case name
+        case breed
+    }
+
     @Environment(\.dismiss) var dismiss
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     
     let horse: Horse?
     
@@ -20,6 +25,7 @@ struct AddEditHorseView: View {
     @State private var selectedPhoto: UIImage?
     @State private var showingImagePicker = false
     @State private var showingDatePicker = false
+    @FocusState private var focusedField: Field?
     
     init(horse: Horse?) {
         self.horse = horse
@@ -98,6 +104,11 @@ struct AddEditHorseView: View {
                             TextField("Horse name", text: $name)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .keyboardType(.asciiCapable)
+                                .submitLabel(.done)
+                                .focused($focusedField, equals: .name)
+                                .onSubmit {
+                                    focusedField = nil
+                                }
                                 .textInputAutocapitalization(.never)
                                 .padding(.horizontal, 4)
                         }
@@ -112,6 +123,11 @@ struct AddEditHorseView: View {
                             TextField("Breed", text: $breed)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .keyboardType(.asciiCapable)
+                                .submitLabel(.done)
+                                .focused($focusedField, equals: .breed)
+                                .onSubmit {
+                                    focusedField = nil
+                                }
                                 .textInputAutocapitalization(.never)
                                 .padding(.horizontal, 4)
                         }
@@ -184,6 +200,14 @@ struct AddEditHorseView: View {
                     dateOfBirth = horse.dateOfBirth
                     if let photoData = horse.photoData {
                         selectedPhoto = UIImage(data: photoData)
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        focusedField = nil
                     }
                 }
             }

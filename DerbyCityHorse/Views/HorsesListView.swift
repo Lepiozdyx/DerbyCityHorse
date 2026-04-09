@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HorsesListView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     @State private var showingAddHorse = false
     @State private var selectedHorse: Horse?
     @State private var horseToEdit: Horse?

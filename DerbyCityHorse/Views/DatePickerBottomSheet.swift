@@ -185,21 +185,22 @@ struct DatePickerBottomSheet: View {
                 }
                 .coordinateSpace(name: "monthSpace")
                 .scrollIndicators(.hidden)
-                .scrollTargetLayout()
+                .compatScrollTargetLayout()
                 .onPreferenceChange(RowPositionKey.self) { positions in
+                    guard geometry.size.height > 0 else { return }
                     let center = geometry.size.height / 2
                     var closest = selectedMonth - 1
                     var minDist: CGFloat = .infinity
                     
                     for pos in positions {
                         let dist = abs(pos.y - center)
-                        if dist < minDist {
+                        if dist < minDist && dist.isFinite {
                             minDist = dist
                             closest = pos.id
                         }
                     }
                     
-                    if closest + 1 != selectedMonth && minDist < 22 {
+                    if closest + 1 != selectedMonth && minDist < 22 && minDist.isFinite {
                         selectedMonth = closest + 1
                         updateDate()
                     }
@@ -248,21 +249,22 @@ struct DatePickerBottomSheet: View {
                 }
                 .coordinateSpace(name: "daySpace")
                 .scrollIndicators(.hidden)
-                .scrollTargetLayout()
+                .compatScrollTargetLayout()
                 .onPreferenceChange(RowPositionKey.self) { positions in
+                    guard geometry.size.height > 0 else { return }
                     let center = geometry.size.height / 2
                     var closest = selectedDay
                     var minDist: CGFloat = .infinity
                     
                     for pos in positions {
                         let dist = abs(pos.y - center)
-                        if dist < minDist {
+                        if dist < minDist && dist.isFinite {
                             minDist = dist
                             closest = pos.id
                         }
                     }
                     
-                    if closest != selectedDay && minDist < 22 {
+                    if closest != selectedDay && minDist < 22 && minDist.isFinite {
                         selectedDay = closest
                         updateDate()
                     }
@@ -360,5 +362,16 @@ struct RoundedCorner: Shape {
             cornerRadii: CGSize(width: radius, height: radius)
         )
         return Path(path.cgPath)
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func compatScrollTargetLayout() -> some View {
+        if #available(iOS 17.0, *) {
+            self.scrollTargetLayout()
+        } else {
+            self
+        }
     }
 }

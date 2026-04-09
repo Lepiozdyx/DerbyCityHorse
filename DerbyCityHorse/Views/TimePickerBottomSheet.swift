@@ -149,7 +149,7 @@ struct TimePickerBottomSheet: View {
                 }
                 .coordinateSpace(name: "hourSpace")
                 .scrollIndicators(.hidden)
-                .scrollTargetLayout()
+                .compatScrollTargetLayout()
                 .onPreferenceChange(RowPositionKey.self) { positions in
                     guard geometry.size.height > 0 else { return }
                     let center = geometry.size.height / 2
@@ -213,7 +213,7 @@ struct TimePickerBottomSheet: View {
                 }
                 .coordinateSpace(name: "minuteSpace")
                 .scrollIndicators(.hidden)
-                .scrollTargetLayout()
+                .compatScrollTargetLayout()
                 .onPreferenceChange(RowPositionKey.self) { positions in
                     guard geometry.size.height > 0 else { return }
                     let center = geometry.size.height / 2

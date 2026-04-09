@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct AddTrainingView: View {
+    private enum Field: Hashable {
+        case notes
+    }
+
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var navigationManager: NavigationManager
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     
     let horse: Horse?
     let training: Training?
@@ -28,6 +32,8 @@ struct AddTrainingView: View {
     @State private var showingMoodPicker = false
     @State private var showingHorsePicker = false
     @State private var showingTypePicker = false
+    @State private var keyboardHeight: CGFloat = 0
+    @FocusState private var focusedField: Field?
     
     init(horse: Horse? = nil, training: Training? = nil) {
         self.horse = horse
@@ -61,10 +67,11 @@ struct AddTrainingView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white.ignoresSafeArea()
-            
-            VStack(spacing: 0) {
+        AnyView(
+            ZStack {
+                Color.white.ignoresSafeArea()
+                
+                VStack(spacing: 0) {
                 // Custom Header with back button
                 HStack(spacing: 8) {
                     Button(action: {
@@ -86,194 +93,11 @@ struct AddTrainingView: View {
                 .padding(.horizontal, 16)
                 
                 ScrollView {
+                    AnyView(
                     VStack(alignment: .leading, spacing: 0) {
-                        // Horse Section
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("Horse:")
-                                .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                .padding(.bottom, 8)
-                            
-                            ZStack(alignment: .topTrailing) {
-                                // Контейнер выбора лошади
-                                VStack(alignment: .leading, spacing: 0) {
-                                    if showingHorsePicker {
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            // "Select" текст вверху
-                                            HStack {
-                                                Text("Select")
-                                                    .font(.system(size: 14, weight: .regular))
-                                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal, 12)
-                                            .padding(.top, 12)
-                                            .padding(.bottom, 12)
-                                            
-                                            // Список лошадей
-                                            VStack(alignment: .leading, spacing: 12) {
-                                                ForEach(dataManager.horses) { horse in
-                                                    Button(action: {
-                                                        playButtonSound()
-                                                        selectedHorse = horse
-                                                        showingHorsePicker = false
-                                                    }) {
-                                                        HStack {
-                                                            Text(horse.name)
-                                                                .font(.system(size: 14, weight: .regular))
-                                                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                                            Spacer()
-                                                        }
-                                                        .padding(.horizontal, 12)
-                                                        .frame(height: 17)
-                                                    }
-                                                }
-                                            }
-                                            .padding(.bottom, 12)
-                                        }
-                                        .frame(minHeight: 0)
-                                    } else {
-                                        // Выбранная лошадь или "Select"
-                                        HStack {
-                                            if let horse = selectedHorse {
-                                                Text(horse.name)
-                                                    .font(.system(size: 14, weight: .regular))
-                                                    .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                            } else {
-                                                Text("Select")
-                                                    .font(.system(size: 14, weight: .regular))
-                                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                            }
-                                            Spacer()
-                                            
-                                            // Стрелка вниз (chevron)
-                                            Image(systemName: "chevron.down")
-                                                .font(.system(size: 10, weight: .regular))
-                                                .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                        }
-                                        .padding(.horizontal, 12)
-                                        .frame(height: 30)
-                                    }
-                                }
-                                .frame(width: 358)
-                                .background(Color(red: 0.922, green: 0.922, blue: 0.922)) // #EBEBEB
-                                .cornerRadius(8)
-                                
-                                // Кнопка назад (стрелка) справа вверху
-                                if showingHorsePicker {
-                                    Button(action: {
-                                        playButtonSound()
-                                        showingHorsePicker = false
-                                    }) {
-                                        TriangleShape()
-                                            .stroke(Color(red: 0.627, green: 0.627, blue: 0.627), lineWidth: 1) // #A0A0A0
-                                            .frame(width: 5, height: 10)
-                                            .rotationEffect(.degrees(45))
-                                    }
-                                    .padding(.trailing, 33)
-                                    .padding(.top, 12)
-                                }
-                            }
-                            .onTapGesture {
-                                playButtonSound()
-                                if !showingHorsePicker {
-                                    showingHorsePicker = true
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.top, 16)
+                        horseSection
                         
-                        // Training Type Section
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("Training Type:")
-                                .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                .padding(.bottom, 8)
-                            
-                            ZStack(alignment: .topTrailing) {
-                                // Контейнер выбора типа тренировки
-                                VStack(alignment: .leading, spacing: 0) {
-                                    if showingTypePicker {
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            // "Select" текст вверху
-                                            HStack {
-                                                Text("Select")
-                                                    .font(.system(size: 14, weight: .regular))
-                                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal, 12)
-                                            .padding(.top, 12)
-                                            .padding(.bottom, 12)
-                                            
-                                            // Список типов тренировок
-                                            VStack(alignment: .leading, spacing: 12) {
-                                                ForEach(TrainingType.allCases, id: \.self) { type in
-                                                    Button(action: {
-                                                        playButtonSound()
-                                                        selectedType = type
-                                                        showingTypePicker = false
-                                                    }) {
-                                                        HStack {
-                                                            Text(type.displayName)
-                                                                .font(.system(size: 14, weight: .regular))
-                                                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                                            Spacer()
-                                                        }
-                                                        .padding(.horizontal, 12)
-                                                        .frame(height: 17)
-                                                    }
-                                                }
-                                            }
-                                            .padding(.bottom, 12)
-                                        }
-                                        .frame(minHeight: 0)
-                                    } else {
-                                        // Выбранный тип тренировки
-                                        HStack {
-                                            Text(selectedType.displayName)
-                                                .font(.system(size: 14, weight: .regular))
-                                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                            Spacer()
-                                            
-                                            // Стрелка вниз (chevron)
-                                            Image(systemName: "chevron.down")
-                                                .font(.system(size: 10, weight: .regular))
-                                                .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                        }
-                                        .padding(.horizontal, 12)
-                                        .frame(height: 30)
-                                    }
-                                }
-                                .frame(width: 358)
-                                .background(Color(red: 0.922, green: 0.922, blue: 0.922)) // #EBEBEB
-                                .cornerRadius(8)
-                                
-                                // Кнопка назад (стрелка) справа вверху
-                                if showingTypePicker {
-                                    Button(action: {
-                                        playButtonSound()
-                                        showingTypePicker = false
-                                    }) {
-                                        TriangleShape()
-                                            .stroke(Color(red: 0.627, green: 0.627, blue: 0.627), lineWidth: 1) // #A0A0A0
-                                            .frame(width: 5, height: 10)
-                                            .rotationEffect(.degrees(45))
-                                    }
-                                    .padding(.trailing, 33)
-                                    .padding(.top, 12)
-                                }
-                            }
-                            .onTapGesture {
-                                playButtonSound()
-                                if !showingTypePicker {
-                                    showingTypePicker = true
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.top, 16)
+                        trainingTypeSection
                         
                         // Duration Section
                         VStack(alignment: .leading, spacing: 0) {
@@ -283,14 +107,8 @@ struct AddTrainingView: View {
                                 .padding(.bottom, 8)
                             
                             HStack {
-                                TextField("min", text: $duration)
-                                    .font(.system(size: 14, weight: .regular))
-                                    .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                    .keyboardType(.numberPad)
-                                    .placeholder(when: duration.isEmpty) {
-                                        Text("min")
-                                            .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                    }
+                                DoneNumberField(text: $duration, placeholder: "min")
+                                    .frame(height: 22)
                                 
                                 Spacer()
                                 
@@ -371,102 +189,7 @@ struct AddTrainingView: View {
                         .padding(.horizontal, 16)
                         .padding(.top, 16)
                         
-                        // Mood Section
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("Mood:")
-                                .font(.system(size: 20, weight: .bold))
-                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                .padding(.bottom, 8)
-                            
-                            ZStack(alignment: .topTrailing) {
-                                // Контейнер выбора настроения
-                                VStack(alignment: .leading, spacing: 0) {
-                                    if showingMoodPicker {
-                                        VStack(alignment: .leading, spacing: 0) {
-                                            // "Select" текст вверху
-                                            HStack {
-                                                Text("Select")
-                                                    .font(.system(size: 14, weight: .regular))
-                                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                                Spacer()
-                                            }
-                                            .padding(.horizontal, 12)
-                                            .padding(.top, 12)
-                                            .padding(.bottom, 12)
-                                            
-                                            // Список настроений
-                                            VStack(alignment: .leading, spacing: 12) {
-                                                ForEach(Array(Mood.allCases.enumerated()), id: \.element) { index, mood in
-                                                    Button(action: {
-                                                        playButtonSound()
-                                                        selectedMood = mood
-                                                        showingMoodPicker = false
-                                                    }) {
-                                                        HStack {
-                                                            Text("\(mood.emoji) \(mood.rawValue)")
-                                                                .font(.system(size: 14, weight: .regular))
-                                                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                                            Spacer()
-                                                        }
-                                                        .padding(.horizontal, 12)
-                                                        .frame(height: 17)
-                                                    }
-                                                }
-                                            }
-                                            .padding(.bottom, 12)
-                                        }
-                                        .frame(minHeight: 0)
-                                    } else {
-                                        // Выбранное настроение или "Select"
-                                        HStack {
-                                            if let mood = selectedMood {
-                                                Text("\(mood.emoji) \(mood.rawValue)")
-                                                    .font(.system(size: 14, weight: .regular))
-                                                    .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
-                                            } else {
-                                                Text("Select")
-                                                    .font(.system(size: 14, weight: .regular))
-                                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                            }
-                                            Spacer()
-                                            
-                                            // Стрелка вниз (chevron)
-                                            Image(systemName: "chevron.down")
-                                                .font(.system(size: 10, weight: .regular))
-                                                .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627)) // #A0A0A0
-                                        }
-                                        .padding(.horizontal, 12)
-                                        .frame(height: 30)
-                                    }
-                                }
-                                .frame(width: 358)
-                                .background(Color(red: 0.922, green: 0.922, blue: 0.922)) // #EBEBEB
-                                .cornerRadius(8)
-                                
-                                // Кнопка назад (стрелка) справа вверху
-                                if showingMoodPicker {
-                                    Button(action: {
-                                        playButtonSound()
-                                        showingMoodPicker = false
-                                    }) {
-                                        TriangleShape()
-                                            .stroke(Color(red: 0.627, green: 0.627, blue: 0.627), lineWidth: 1) // #A0A0A0
-                                            .frame(width: 5, height: 10)
-                                            .rotationEffect(.degrees(45))
-                                    }
-                                    .padding(.trailing, 33)
-                                    .padding(.top, 12)
-                                }
-                            }
-                            .onTapGesture {
-                                playButtonSound()
-                                if !showingMoodPicker {
-                                    showingMoodPicker = true
-                                }
-                            }
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.top, 16)
+                        moodSection
                         
                         // Note Section
                         VStack(alignment: .leading, spacing: 0) {
@@ -489,6 +212,13 @@ struct AddTrainingView: View {
                                     .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
                                     .keyboardType(.asciiCapable)
                                     .textInputAutocapitalization(.never)
+                                    .focused($focusedField, equals: .notes)
+                                    .onChange(of: notes) { newValue in
+                                        if newValue.contains("\n") {
+                                            notes = newValue.replacingOccurrences(of: "\n", with: " ")
+                                            focusedField = nil
+                                        }
+                                    }
                                     .padding(.horizontal, 4)
                                     .padding(.vertical, 4)
                             }
@@ -498,62 +228,14 @@ struct AddTrainingView: View {
                         }
                         .padding(.horizontal, 16)
                         .padding(.top, 16)
-                        .padding(.bottom, 100) // Отступ для кнопки внизу
-                    }
+                        .padding(.bottom, scrollBottomPadding)
+                    })
                 }
             }
             .overlay(alignment: .bottom) {
-                // Save Training Button
-                Button(action: {
-                    playButtonSound()
-                    guard let horse = selectedHorse,
-                          let durationInt = Int(duration) else { return }
-                    
-                    // Объединяем дату и время
-                    let calendar = Calendar.current
-                    let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-                    let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
-                    var combinedComponents = DateComponents()
-                    combinedComponents.year = dateComponents.year
-                    combinedComponents.month = dateComponents.month
-                    combinedComponents.day = dateComponents.day
-                    combinedComponents.hour = timeComponents.hour
-                    combinedComponents.minute = timeComponents.minute
-                    let combinedDate = calendar.date(from: combinedComponents) ?? date
-                    
-                    if let existingTraining = training {
-                        // Обновляем существующую тренировку
-                        var updatedTraining = existingTraining
-                        updatedTraining.type = selectedType
-                        updatedTraining.date = combinedDate
-                        updatedTraining.duration = durationInt
-                        updatedTraining.notes = notes
-                        updatedTraining.mood = selectedMood ?? .calm
-                        dataManager.updateTraining(updatedTraining)
-                    } else {
-                        // Создаем новую тренировку
-                        let newTraining = Training(
-                            horseId: horse.id,
-                            date: combinedDate,
-                            duration: durationInt,
-                            type: selectedType,
-                            notes: notes,
-                            mood: selectedMood ?? .calm
-                        )
-                        dataManager.addTraining(newTraining)
-                    }
-                    dismiss()
-                }) {
-                    Text("Save Training")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.white)
-                        .frame(width: 358, height: 50)
-                        .background(canSave ? Color(red: 0.945, green: 0.0, blue: 0.173) : Color(red: 0.627, green: 0.627, blue: 0.627)) // #F1002C или #A0A0A0
-                        .cornerRadius(50)
+                if keyboardHeight == 0 {
+                    saveTrainingButton
                 }
-                .disabled(!canSave)
-                .padding(.horizontal, 16)
-                .padding(.bottom, 99) // Отступ для панели навигации
             }
             .overlay(Group {
                 if showingDatePicker {
@@ -569,7 +251,7 @@ struct AddTrainingView: View {
             })
             .overlay(alignment: .bottom) {
                 // Custom Tab Bar - скрывается при открытии пикеров
-                if !showingDatePicker && !showingTimePicker && !showingHorsePicker && !showingTypePicker {
+                if !showingDatePicker && !showingTimePicker && !showingHorsePicker && !showingTypePicker && keyboardHeight == 0 {
                     VStack(spacing: 0) {
                         Spacer()
                         
@@ -621,8 +303,366 @@ struct AddTrainingView: View {
                     }
                 }
             }
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        focusedField = nil
+                    }
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+                guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+                withAnimation(.easeOut(duration: 0.25)) {
+                    keyboardHeight = frame.height
+                }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                withAnimation(.easeOut(duration: 0.25)) {
+                    keyboardHeight = 0
+                }
+            }
+        )
+    }
+
+    /// Tab bar (83) + Save (50) + spacing; without keyboard overlays are visible.
+    /// With keyboard: use trimmed keyboard height to avoid huge empty scroll (double inset with system).
+    private var scrollBottomPadding: CGFloat {
+        let safeAreaBottom = safeAreaBottomInset
+        if keyboardHeight > 0 {
+            let trimmed = keyboardHeight - safeAreaBottom - 28
+            return max(64, min(trimmed, 260))
         }
-        .ignoresSafeArea(edges: .bottom)
+        return 83 + 50 + 24 + safeAreaBottom
+    }
+
+    private var safeAreaBottomInset: CGFloat {
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = scene.windows.first(where: { $0.isKeyWindow }) else {
+            return 0
+        }
+        return window.safeAreaInsets.bottom
+    }
+
+    private var horseSection: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Horse:")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                .padding(.bottom, 8)
+
+            ZStack(alignment: .topTrailing) {
+                VStack(alignment: .leading, spacing: 0) {
+                    if showingHorsePicker {
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack {
+                                Text("Select")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627))
+                                Spacer()
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.top, 12)
+                            .padding(.bottom, 12)
+
+                            VStack(alignment: .leading, spacing: 12) {
+                                ForEach(dataManager.horses) { horse in
+                                    Button(action: {
+                                        playButtonSound()
+                                        selectedHorse = horse
+                                        showingHorsePicker = false
+                                    }) {
+                                        HStack {
+                                            Text(horse.name)
+                                                .font(.system(size: 14, weight: .regular))
+                                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                                            Spacer()
+                                        }
+                                        .padding(.horizontal, 12)
+                                        .frame(height: 17)
+                                    }
+                                }
+                            }
+                            .padding(.bottom, 12)
+                        }
+                        .frame(minHeight: 0)
+                    } else {
+                        HStack {
+                            if let horse = selectedHorse {
+                                Text(horse.name)
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                            } else {
+                                Text("Select")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627))
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.down")
+                                .font(.system(size: 10, weight: .regular))
+                                .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627))
+                        }
+                        .padding(.horizontal, 12)
+                        .frame(height: 30)
+                    }
+                }
+                .frame(width: 358)
+                .background(Color(red: 0.922, green: 0.922, blue: 0.922))
+                .cornerRadius(8)
+
+                if showingHorsePicker {
+                    Button(action: {
+                        playButtonSound()
+                        showingHorsePicker = false
+                    }) {
+                        TriangleShape()
+                            .stroke(Color(red: 0.627, green: 0.627, blue: 0.627), lineWidth: 1)
+                            .frame(width: 5, height: 10)
+                            .rotationEffect(.degrees(45))
+                    }
+                    .padding(.trailing, 33)
+                    .padding(.top, 12)
+                }
+            }
+            .onTapGesture {
+                playButtonSound()
+                if !showingHorsePicker {
+                    showingHorsePicker = true
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 16)
+    }
+
+    private var trainingTypeSection: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Training Type:")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                .padding(.bottom, 8)
+
+            ZStack(alignment: .topTrailing) {
+                VStack(alignment: .leading, spacing: 0) {
+                    if showingTypePicker {
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack {
+                                Text("Select")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627))
+                                Spacer()
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.top, 12)
+                            .padding(.bottom, 12)
+
+                            VStack(alignment: .leading, spacing: 12) {
+                                ForEach(TrainingType.allCases, id: \.self) { type in
+                                    Button(action: {
+                                        playButtonSound()
+                                        selectedType = type
+                                        showingTypePicker = false
+                                    }) {
+                                        HStack {
+                                            Text(type.displayName)
+                                                .font(.system(size: 14, weight: .regular))
+                                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                                            Spacer()
+                                        }
+                                        .padding(.horizontal, 12)
+                                        .frame(height: 17)
+                                    }
+                                }
+                            }
+                            .padding(.bottom, 12)
+                        }
+                        .frame(minHeight: 0)
+                    } else {
+                        HStack {
+                            Text(selectedType.displayName)
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                            Spacer()
+                            Image(systemName: "chevron.down")
+                                .font(.system(size: 10, weight: .regular))
+                                .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627))
+                        }
+                        .padding(.horizontal, 12)
+                        .frame(height: 30)
+                    }
+                }
+                .frame(width: 358)
+                .background(Color(red: 0.922, green: 0.922, blue: 0.922))
+                .cornerRadius(8)
+
+                if showingTypePicker {
+                    Button(action: {
+                        playButtonSound()
+                        showingTypePicker = false
+                    }) {
+                        TriangleShape()
+                            .stroke(Color(red: 0.627, green: 0.627, blue: 0.627), lineWidth: 1)
+                            .frame(width: 5, height: 10)
+                            .rotationEffect(.degrees(45))
+                    }
+                    .padding(.trailing, 33)
+                    .padding(.top, 12)
+                }
+            }
+            .onTapGesture {
+                playButtonSound()
+                if !showingTypePicker {
+                    showingTypePicker = true
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 16)
+    }
+
+    private var moodSection: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Mood:")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                .padding(.bottom, 8)
+
+            ZStack(alignment: .topTrailing) {
+                VStack(alignment: .leading, spacing: 0) {
+                    if showingMoodPicker {
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack {
+                                Text("Select")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627))
+                                Spacer()
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.top, 12)
+                            .padding(.bottom, 12)
+
+                            VStack(alignment: .leading, spacing: 12) {
+                                ForEach(Array(Mood.allCases.enumerated()), id: \.element) { _, mood in
+                                    Button(action: {
+                                        playButtonSound()
+                                        selectedMood = mood
+                                        showingMoodPicker = false
+                                    }) {
+                                        HStack {
+                                            Text("\(mood.emoji) \(mood.rawValue)")
+                                                .font(.system(size: 14, weight: .regular))
+                                                .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                                            Spacer()
+                                        }
+                                        .padding(.horizontal, 12)
+                                        .frame(height: 17)
+                                    }
+                                }
+                            }
+                            .padding(.bottom, 12)
+                        }
+                        .frame(minHeight: 0)
+                    } else {
+                        HStack {
+                            if let mood = selectedMood {
+                                Text("\(mood.emoji) \(mood.rawValue)")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133))
+                            } else {
+                                Text("Select")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627))
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.down")
+                                .font(.system(size: 10, weight: .regular))
+                                .foregroundColor(Color(red: 0.627, green: 0.627, blue: 0.627))
+                        }
+                        .padding(.horizontal, 12)
+                        .frame(height: 30)
+                    }
+                }
+                .frame(width: 358)
+                .background(Color(red: 0.922, green: 0.922, blue: 0.922))
+                .cornerRadius(8)
+
+                if showingMoodPicker {
+                    Button(action: {
+                        playButtonSound()
+                        showingMoodPicker = false
+                    }) {
+                        TriangleShape()
+                            .stroke(Color(red: 0.627, green: 0.627, blue: 0.627), lineWidth: 1)
+                            .frame(width: 5, height: 10)
+                            .rotationEffect(.degrees(45))
+                    }
+                    .padding(.trailing, 33)
+                    .padding(.top, 12)
+                }
+            }
+            .onTapGesture {
+                playButtonSound()
+                if !showingMoodPicker {
+                    showingMoodPicker = true
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.top, 16)
+    }
+
+    private var saveTrainingButton: some View {
+        Button(action: {
+            playButtonSound()
+            guard let horse = selectedHorse,
+                  let durationInt = Int(duration) else { return }
+            
+            // Объединяем дату и время
+            let calendar = Calendar.current
+            let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+            let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+            var combinedComponents = DateComponents()
+            combinedComponents.year = dateComponents.year
+            combinedComponents.month = dateComponents.month
+            combinedComponents.day = dateComponents.day
+            combinedComponents.hour = timeComponents.hour
+            combinedComponents.minute = timeComponents.minute
+            let combinedDate = calendar.date(from: combinedComponents) ?? date
+            
+            if let existingTraining = training {
+                // Обновляем существующую тренировку
+                var updatedTraining = existingTraining
+                updatedTraining.type = selectedType
+                updatedTraining.date = combinedDate
+                updatedTraining.duration = durationInt
+                updatedTraining.notes = notes
+                updatedTraining.mood = selectedMood ?? .calm
+                dataManager.updateTraining(updatedTraining)
+            } else {
+                // Создаем новую тренировку
+                let newTraining = Training(
+                    horseId: horse.id,
+                    date: combinedDate,
+                    duration: durationInt,
+                    type: selectedType,
+                    notes: notes,
+                    mood: selectedMood ?? .calm
+                )
+                dataManager.addTraining(newTraining)
+            }
+            dismiss()
+        }) {
+            Text("Save Training")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(.white)
+                .frame(width: 358, height: 50)
+                .background(canSave ? Color(red: 0.945, green: 0.0, blue: 0.173) : Color(red: 0.627, green: 0.627, blue: 0.627)) // #F1002C или #A0A0A0
+                .cornerRadius(50)
+        }
+        .disabled(!canSave)
+        .padding(.horizontal, 16)
+        .padding(.bottom, 99) // Отступ для панели навигации
     }
     
     private var canSave: Bool {
@@ -654,4 +694,68 @@ extension View {
                 self
             }
         }
+}
+
+private struct DoneNumberField: UIViewRepresentable {
+    @Binding var text: String
+    let placeholder: String
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(text: $text)
+    }
+
+    func makeUIView(context: Context) -> UITextField {
+        let textField = UITextField(frame: .zero)
+        textField.keyboardType = .numberPad
+        textField.placeholder = placeholder
+        textField.textColor = UIColor(red: 0.133, green: 0.133, blue: 0.133, alpha: 1.0)
+        textField.font = .systemFont(ofSize: 14, weight: .regular)
+        textField.delegate = context.coordinator
+        textField.addTarget(context.coordinator, action: #selector(Coordinator.textChanged(_:)), for: .editingChanged)
+
+        // Wrapper avoids _UIToolbarContentView width/height == 0 during keyboard layout (Auto Layout warnings).
+        let w = UIScreen.main.bounds.width
+        let h: CGFloat = 44
+        let accessory = UIView(frame: CGRect(x: 0, y: 0, width: w, height: h))
+        accessory.backgroundColor = .clear
+        accessory.autoresizingMask = [.flexibleWidth]
+
+        let toolbar = UIToolbar(frame: accessory.bounds)
+        toolbar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        let flex = UIBarButtonItem(systemItem: .flexibleSpace)
+        let done = UIBarButtonItem(title: "Done", style: .done, target: context.coordinator, action: #selector(Coordinator.doneTapped))
+        toolbar.items = [flex, done]
+        accessory.addSubview(toolbar)
+
+        textField.inputAccessoryView = accessory
+
+        return textField
+    }
+
+    func updateUIView(_ uiView: UITextField, context: Context) {
+        if uiView.text != text {
+            uiView.text = text
+        }
+    }
+
+    final class Coordinator: NSObject, UITextFieldDelegate {
+        @Binding var text: String
+
+        init(text: Binding<String>) {
+            self._text = text
+        }
+
+        @objc func textChanged(_ sender: UITextField) {
+            text = sender.text ?? ""
+        }
+
+        @objc func doneTapped() {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            if string.isEmpty { return true }
+            return string.allSatisfy(\.isNumber)
+        }
+    }
 }

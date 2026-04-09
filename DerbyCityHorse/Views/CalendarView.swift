@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CalendarView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     @State private var currentDate = Date()
     @State private var selectedDate: Date?
     

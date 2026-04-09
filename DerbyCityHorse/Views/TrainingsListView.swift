@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TrainingsListView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     @State private var showingAddTraining = false
     @State private var selectedHorse: Horse?
     @State private var selectedType: TrainingType?
@@ -144,10 +144,13 @@ struct TrainingsListView: View {
 
 struct TrainingListCard: View {
     let training: Training
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     @Binding var swipedTrainingId: UUID?
     @Binding var trainingToEdit: Training?
     @State private var offset: CGFloat = 0
+    private let actionButtonSize: CGFloat = 48 // ~5% smaller than 50
+    private let actionButtonsStartX: CGFloat = 252 // shifted slightly left
+    private let actionButtonsSpacing: CGFloat = 8
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -177,13 +180,13 @@ struct TrainingListCard: View {
                 }) {
                     Image("edit")
                         .resizable()
-                        .frame(width: 26, height: 26)
+                        .frame(width: 24.7, height: 24.7) // -5%
                         .foregroundColor(Color(red: 0.133, green: 0.133, blue: 0.133)) // #222222
                 }
-                .frame(width: 50, height: 50)
+                .frame(width: actionButtonSize, height: actionButtonSize)
                 .background(Color(red: 1.0, green: 0.933, blue: 0.0)) // #FFEE00
                 .clipShape(Circle())
-                .offset(x: 258 + 8, y: 0) // Карточка 358px + отступ 8px
+                .offset(x: actionButtonsStartX + actionButtonsSpacing, y: 0)
                 
                 // Кнопка удаления (красная, круглая)
                 Button(action: {
@@ -195,13 +198,13 @@ struct TrainingListCard: View {
                 }) {
                     Image("delete")
                         .resizable()
-                        .frame(width: 24, height: 30)
+                        .frame(width: 22.8, height: 28.5) // -5%
                         .foregroundColor(.white) // #FFFFFF
                 }
-                .frame(width: 50, height: 50)
+                .frame(width: actionButtonSize, height: actionButtonSize)
                 .background(Color(red: 0.945, green: 0.0, blue: 0.173)) // #F1002C
                 .clipShape(Circle())
-                .offset(x: 258 + 8 + 50 + 8, y: 0) // Карточка 358px + отступ 8px + edit кнопка 50px + spacing 8px
+                .offset(x: actionButtonsStartX + actionButtonsSpacing + actionButtonSize + actionButtonsSpacing, y: 0)
             }
             
             // Основной контент карточки
@@ -323,7 +326,7 @@ struct FilterDropdownView: View {
     @Binding var selectedHorse: Horse?
     @Binding var selectedType: TrainingType?
     @Binding var showingFilter: Bool
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     
     var body: some View {
         VStack(alignment: .trailing, spacing: 0) {

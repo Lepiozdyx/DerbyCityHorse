@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomDatePicker: View {
     @Binding var selectedDate: Date
     @State private var currentMonth: Date
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     
     let onDateSelected: (Date) -> Void
     

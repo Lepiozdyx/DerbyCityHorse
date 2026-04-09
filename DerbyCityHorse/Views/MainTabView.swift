@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @EnvironmentObject var navigationManager: NavigationManager
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     @State private var showingAddHorse = false
     
     private var selectedTab: Int {

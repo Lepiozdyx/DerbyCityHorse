@@ -10,7 +10,7 @@ import SwiftUI
 struct AddJournalEntryView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var navigationManager: NavigationManager
-    @StateObject private var dataManager = DataManager.shared
+    @ObservedObject private var dataManager = DataManager.shared
     
     let horse: Horse
     
